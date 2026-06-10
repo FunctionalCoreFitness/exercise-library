@@ -263,7 +263,41 @@
       letter-spacing: 0.05em;
     }
 
-    @media (max-width: 600px) {
+    .back-link {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--steel);
+      text-decoration: none;
+      margin-bottom: 1rem;
+      opacity: 0.8;
+      transition: opacity 0.15s;
+    }
+    .back-link:hover { opacity: 1; }
+
+    .series-select-wrap {
+      margin-bottom: 1rem;
+    }
+    .series-select-wrap select {
+      padding: 8px 36px 8px 14px;
+      background: var(--card-bg);
+      border: 1px solid #243650;
+      border-radius: 6px;
+      color: var(--off-white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c8cdd4' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      min-width: 240px;
+    }
+    .series-select-wrap select:focus { outline: none; border-color: var(--steel); }
+    .series-select-wrap select option { background: #162537; }
       header, .controls, .grid { padding-left: 1rem; padding-right: 1rem; }
       .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
     }
@@ -272,6 +306,7 @@
 <body>
 
 <header>
+  <a href="https://functionalcorefitness.net" class="back-link">← functionalcorefitness.net</a>
   <p class="header-eyebrow">Functional Core Fitness · Coach Omar Lima</p>
   <h1 class="header-title">Exercise<br><span>Library</span></h1>
   <p class="header-sub" id="header-sub">Loading…</p>
@@ -293,14 +328,16 @@
   </div>
 
   <p class="filter-label">Series</p>
-  <div class="filters" id="series-filters">
-    <button class="pill active" data-series="all">All Series</button>
-    <button class="pill" data-series="independence">Independence Through Movement</button>
-    <button class="pill" data-series="ladder">Agility Ladder</button>
-    <button class="pill" data-series="smr">SMR for Grapplers</button>
-    <button class="pill" data-series="stick">Stick Mobility</button>
-    <button class="pill" data-series="ironman">Ironman Race Day</button>
-    <button class="pill" data-series="fundamentals">Fundamentals</button>
+  <div class="series-select-wrap">
+    <select id="series-select">
+      <option value="all">All Series</option>
+      <option value="fundamentals">Fundamentals</option>
+      <option value="independence">Independence Through Movement</option>
+      <option value="ladder">Agility Ladder</option>
+      <option value="smr">SMR for Grapplers</option>
+      <option value="stick">Stick Mobility</option>
+      <option value="ironman">Ironman Race Day</option>
+    </select>
   </div>
 
   <p class="count" id="count"></p>
@@ -460,12 +497,8 @@ document.getElementById("cat-filters").addEventListener("click", e => {
   renderGrid();
 });
 
-document.getElementById("series-filters").addEventListener("click", e => {
-  const btn = e.target.closest(".pill");
-  if (!btn) return;
-  activeSeries = btn.dataset.series;
-  document.querySelectorAll("#series-filters .pill").forEach(p => p.classList.remove("active","series-active"));
-  btn.classList.add(activeSeries === "all" ? "active" : "series-active");
+document.getElementById("series-select").addEventListener("change", e => {
+  activeSeries = e.target.value;
   renderGrid();
 });
 
