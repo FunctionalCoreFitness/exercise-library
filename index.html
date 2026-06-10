@@ -30,7 +30,6 @@
       min-height: 100vh;
     }
 
-    /* HEADER */
     header {
       padding: 2.5rem 2rem 0;
       max-width: 1100px;
@@ -61,7 +60,6 @@
       margin-bottom: 2rem;
     }
 
-    /* CONTROLS */
     .controls {
       max-width: 1100px;
       margin: 0 auto;
@@ -93,11 +91,22 @@
     .search-wrap input::placeholder { color: var(--silver); opacity: 0.6; }
     .search-wrap input:focus { outline: none; border-color: var(--steel); }
 
+    .filter-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--silver);
+      opacity: 0.5;
+      margin-bottom: 6px;
+    }
+
     .filters {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
     .pill {
       padding: 6px 16px;
@@ -114,15 +123,16 @@
     }
     .pill:hover { border-color: var(--steel); color: var(--off-white); }
     .pill.active { background: var(--steel); border-color: var(--steel); color: #fff; }
+    .pill.series-active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
 
     .count {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 13px;
       color: var(--silver);
       opacity: 0.7;
+      margin-top: 0.25rem;
     }
 
-    /* DIVIDER */
     .divider {
       max-width: 1100px;
       margin: 0 auto 1.5rem;
@@ -131,7 +141,6 @@
       border-top: 1px solid #1e3250;
     }
 
-    /* GRID */
     .grid {
       max-width: 1100px;
       margin: 0 auto;
@@ -141,7 +150,6 @@
       gap: 16px;
     }
 
-    /* CARD */
     .card {
       background: var(--card-bg);
       border: 1px solid #1e3250;
@@ -153,6 +161,7 @@
       transition: transform 0.15s, border-color 0.15s;
     }
     .card:hover { transform: translateY(-3px); border-color: var(--steel); }
+    .card.coming-soon { opacity: 0.5; cursor: default; pointer-events: none; }
 
     .thumb {
       width: 100%;
@@ -189,6 +198,25 @@
     }
     .play-circle svg { margin-left: 3px; }
 
+    .coming-soon-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #0d1c2e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #1e3250;
+    }
+    .coming-soon-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--silver);
+      opacity: 0.4;
+    }
+
     .card-body { padding: 12px 14px 14px; }
     .card-name {
       font-family: 'Barlow Condensed', sans-serif;
@@ -208,13 +236,13 @@
       padding: 2px 8px;
       border-radius: 4px;
     }
-    .tag-core    { background: var(--tag-core-bg);  color: var(--tag-core); }
-    .tag-upper   { background: var(--tag-upper-bg); color: var(--tag-upper); }
-    .tag-lower   { background: var(--tag-lower-bg); color: var(--tag-lower); }
-    .tag-stability { background: var(--tag-stab-bg); color: var(--tag-stab); }
-    .tag-mobility  { background: var(--tag-mob-bg);  color: var(--tag-mob); }
+    .tag-core      { background: var(--tag-core-bg);  color: var(--tag-core); }
+    .tag-upper     { background: var(--tag-upper-bg); color: var(--tag-upper); }
+    .tag-lower     { background: var(--tag-lower-bg); color: var(--tag-lower); }
+    .tag-stability { background: var(--tag-stab-bg);  color: var(--tag-stab); }
+    .tag-mobility  { background: var(--tag-mob-bg);   color: var(--tag-mob); }
+    .tag-series    { background: #2d1f4e; color: #c4a8ff; }
 
-    /* EMPTY STATE */
     .empty {
       grid-column: 1 / -1;
       text-align: center;
@@ -225,7 +253,6 @@
       font-size: 18px;
     }
 
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 1.5rem 2rem 2.5rem;
@@ -247,7 +274,7 @@
 <header>
   <p class="header-eyebrow">Functional Core Fitness · Coach Omar Lima</p>
   <h1 class="header-title">Exercise<br><span>Library</span></h1>
-  <p class="header-sub">19 exercises · tap to watch on YouTube</p>
+  <p class="header-sub" id="header-sub">Loading…</p>
 </header>
 
 <div class="controls">
@@ -255,100 +282,192 @@
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     <input type="text" id="search" placeholder="Search exercises…" autocomplete="off" />
   </div>
-  <div class="filters" id="filters">
+
+  <p class="filter-label">Category</p>
+  <div class="filters" id="cat-filters">
     <button class="pill active" data-filter="all">All</button>
     <button class="pill" data-filter="core">Core</button>
     <button class="pill" data-filter="upper">Upper Body</button>
     <button class="pill" data-filter="lower">Lower Body</button>
     <button class="pill" data-filter="stability">Stability</button>
   </div>
-  <p class="count" id="count">Showing 18 exercises</p>
+
+  <p class="filter-label">Series</p>
+  <div class="filters" id="series-filters">
+    <button class="pill active" data-series="all">All Series</button>
+    <button class="pill" data-series="independence">Independence Through Movement</button>
+    <button class="pill" data-series="ladder">Agility Ladder</button>
+    <button class="pill" data-series="smr">SMR for Grapplers</button>
+    <button class="pill" data-series="stick">Stick Mobility</button>
+    <button class="pill" data-series="ironman">Ironman Race Day</button>
+    <button class="pill" data-series="fundamentals">Fundamentals</button>
+  </div>
+
+  <p class="count" id="count"></p>
 </div>
 
 <hr class="divider" />
-
 <div class="grid" id="grid"></div>
-
 <footer>FUNCTIONAL CORE FITNESS &nbsp;·&nbsp; MOUNTAIN VIEW, CA &nbsp;·&nbsp; youtube.com/@FunctionalCoreFitness</footer>
 
 <script>
-const exercises = [
-  { name: "Push-Up",                    id: "cOHvJvKhbIo", tags: ["upper"] },
-  { name: "Banded Side-to-Side Walks",  id: "Vtactv6CVbA", tags: ["lower"] },
-  { name: "Deceleration Squats",        id: "xKX841sMnIk", tags: ["lower"] },
-  { name: "Kneeling to Tall Kneeling",  id: "3z72ZfGDXXw", tags: ["lower"] },
-  { name: "Single-Leg RDL",             id: "4nIUUVuuOr4", tags: ["lower"] },
-  { name: "Single-Leg Forward Reach",   id: "xYtrS20PP_0", tags: ["lower","stability"] },
-  { name: "Lunge",                      id: "4_G9-JLud6U", tags: ["lower"] },
-  { name: "Hip Hinge",                  id: "QojJl6xChfY", tags: ["lower"] },
-  { name: "Single-Leg Alphabet Trace",  id: "HCP0Ff2drVE", tags: ["lower","stability"] },
-  { name: "Bridge March",               id: "Ydbdd7m7-W4", tags: ["lower"] },
-  { name: "Heel Slide",                 id: "e3lxOV2Z9J8", tags: ["core"] },
-  { name: "Bent-Knee Fallout",          id: "J6EdMjlfHmc", tags: ["core"] },
-  { name: "Pallof Press",               id: "toesHgIHcgo", tags: ["core"] },
-  { name: "Leg Lowers",                 id: "cyR2dI936yQ", tags: ["core"] },
-  { name: "Dead Bug Hold",              id: "DYf9ozrQ8-M", tags: ["core"] },
-  { name: "Bird Dog",                   id: "rDerTS524Og", tags: ["core"] },
-  { name: "Plank",                      id: "n141yZWEmn0", tags: ["core"] },
-  { name: "Side Plank",                 id: "dWntXGJ4cFg", tags: ["core"] },
-  { name: "Bridge",                     id: "KwleMZ5V7Ow", tags: ["lower"] },
-];
-
 const tagLabels = { core: "Core", upper: "Upper Body", lower: "Lower Body", stability: "Stability", mobility: "Mobility" };
 const tagClass  = { core: "tag-core", upper: "tag-upper", lower: "tag-lower", stability: "tag-stability", mobility: "tag-mobility" };
 
-let activeFilter = "all";
+const seriesLabels = {
+  independence: "Independence Through Movement",
+  ladder:       "Agility Ladder",
+  smr:          "SMR for Grapplers",
+  stick:        "Stick Mobility",
+  ironman:      "Ironman Race Day",
+  fundamentals: "Fundamentals"
+};
+
+const videos = [
+  // FUNDAMENTALS
+  { name: "Push-Up",                   id: "cOHvJvKhbIo", tags: ["upper"],             series: "fundamentals" },
+  { name: "Banded Side-to-Side Walks", id: "Vtactv6CVbA", tags: ["lower"],             series: "fundamentals" },
+  { name: "Deceleration Squats",       id: "xKX841sMnIk", tags: ["lower"],             series: "fundamentals" },
+  { name: "Kneeling to Tall Kneeling", id: "3z72ZfGDXXw", tags: ["lower"],             series: "fundamentals" },
+  { name: "Single-Leg RDL",            id: "4nIUUVuuOr4", tags: ["lower"],             series: "fundamentals" },
+  { name: "Single-Leg Forward Reach",  id: "xYtrS20PP_0", tags: ["lower","stability"], series: "fundamentals" },
+  { name: "Lunge",                     id: "4_G9-JLud6U", tags: ["lower"],             series: "fundamentals" },
+  { name: "Hip Hinge",                 id: "QojJl6xChfY", tags: ["lower"],             series: "fundamentals" },
+  { name: "Single-Leg Alphabet Trace", id: "HCP0Ff2drVE", tags: ["lower","stability"], series: "fundamentals" },
+  { name: "Bridge March",              id: "Ydbdd7m7-W4", tags: ["lower"],             series: "fundamentals" },
+  { name: "Heel Slide",                id: "e3lxOV2Z9J8", tags: ["core"],              series: "fundamentals" },
+  { name: "Bent-Knee Fallout",         id: "J6EdMjlfHmc", tags: ["core"],              series: "fundamentals" },
+  { name: "Pallof Press",              id: "toesHgIHcgo", tags: ["core"],              series: "fundamentals" },
+  { name: "Leg Lowers",                id: "cyR2dI936yQ", tags: ["core"],              series: "fundamentals" },
+  { name: "Dead Bug Hold",             id: "DYf9ozrQ8-M", tags: ["core"],              series: "fundamentals" },
+  { name: "Bird Dog",                  id: "rDerTS524Og", tags: ["core"],              series: "fundamentals" },
+  { name: "Plank",                     id: "n141yZWEmn0", tags: ["core"],              series: "fundamentals" },
+  { name: "Side Plank",                id: "dWntXGJ4cFg", tags: ["core"],              series: "fundamentals" },
+  { name: "Bridge",                    id: "KwleMZ5V7Ow", tags: ["lower"],             series: "fundamentals" },
+
+  // INDEPENDENCE THROUGH MOVEMENT
+  { name: "Turkish Get-Up for Beginners | Ep. 1",       id: "u_v_SvBpQTc", tags: ["lower","stability"], series: "independence" },
+  { name: "Rolling & Floor Transitions | Ep. 2",        id: "E_n8A5-MOQw", tags: ["mobility"],          series: "independence" },
+  { name: "Bridge Exercise for Beginners | Ep. 3",      id: "PNvTGBnctg8", tags: ["lower"],             series: "independence" },
+  { name: "Half Kneeling Transitions | Ep. 4",          id: "knz5y-IrCDI", tags: ["lower","stability"], series: "independence" },
+  { name: "Half Kneeling to Standing | Ep. 5",          id: "0uZwFZF1iPw", tags: ["lower","stability"], series: "independence" },
+  { name: "Step-Ups for Beginners | Ep. 6",             id: "OnxuKIxeXhI", tags: ["lower","stability"], series: "independence" },
+  { name: "Single Leg Balance & Forward Reach | Ep. 7", id: null,          tags: ["lower","stability"], series: "independence", comingSoon: true },
+  { name: "Lateral Steps for Beginners | Ep. 8",        id: null,          tags: ["lower","stability"], series: "independence", comingSoon: true },
+  { name: "Hip Hinge for Beginners | Ep. 9",            id: null,          tags: ["lower"],             series: "independence", comingSoon: true },
+  { name: "Farmer Carry for Beginners | Ep. 10",        id: null,          tags: ["lower"],             series: "independence", comingSoon: true },
+  { name: "Pallof Press for Beginners | Ep. 11",        id: null,          tags: ["core"],              series: "independence", comingSoon: true },
+  { name: "Walking Mechanics for Beginners | Ep. 12",   id: null,          tags: ["mobility"],          series: "independence", comingSoon: true },
+
+  // AGILITY LADDER
+  { name: "Agility Ladder Beginner | Footwork & Coordination (Part 1)",      id: "SqEJue9KOL4", tags: ["lower","stability"], series: "ladder" },
+  { name: "Agility Ladder Intermediate | Speed & Coordination (Part 2)",     id: "4SZZOQOhpHA", tags: ["lower","stability"], series: "ladder" },
+  { name: "Agility Ladder Advanced | Explosive Power & Conditioning (Part 3)",id: "5hgzMgpEjmw", tags: ["lower","stability"], series: "ladder" },
+  { name: "10-Min Ladder for Beginners | Sagittal Plane Basics",             id: "wHHMYmKuw1s", tags: ["lower","stability"], series: "ladder" },
+  { name: "10-Min Ladder for Beginners | Frontal Plane Focus",               id: "QRorkNTb2Mw", tags: ["lower","stability"], series: "ladder" },
+  { name: "10-Min Ladder for Beginners | Transverse Plane Focus",            id: "KxdXJh9AlOo", tags: ["lower","stability"], series: "ladder" },
+
+  // SMR FOR GRAPPLERS
+  { name: "Chest Tight from Rolling? SMR for BJJ Grapplers",        id: "dZBTCOKcL1A", tags: ["upper","mobility"], series: "smr" },
+  { name: "Shoulder Tight After Jiu-Jitsu? Teres SMR for Grapplers",id: "044vTs2fD0g", tags: ["upper","mobility"], series: "smr" },
+  { name: "Rounded Upper Back from Grappling? T-Spine SMR for BJJ", id: "7mhAByS79Qw", tags: ["upper","mobility"], series: "smr" },
+  { name: "Lat Tight from Guard Work? SMR for Jiu-Jitsu Athletes",  id: "M1mwy5hLR1c", tags: ["upper","mobility"], series: "smr" },
+  { name: "Neck Tight After Rolling? Stretches for BJJ Grapplers",  id: "S8pdbOJhO-A", tags: ["upper","mobility"], series: "smr" },
+  { name: "Tight Hips from Guard? Hip Flexor Recovery for Grapplers",id:"Qp_WrJgkAIs", tags: ["lower","mobility"], series: "smr" },
+
+  // STICK MOBILITY
+  { name: "Stick Mobility Basics #1 | Ankle, Hip & Shoulder Foundation", id: "bh3s_YNToDg", tags: ["mobility"], series: "stick" },
+  { name: "Stick Mobility Basics #2 | Core Activation & Hip Control",    id: "gwM0CR6oLKo", tags: ["core","mobility"], series: "stick" },
+
+  // IRONMAN
+  { name: "IRONMAN California 140.6 | My 45th Birthday Race – Trailer", id: "OYzwbsYvzrY", tags: [], series: "ironman" },
+  { name: "I Completed My First Ironman on My 45th Birthday (140.6 Mi)",id: "L4LI_w0wzx0", tags: [], series: "ironman" },
+];
+
+let activeCat    = "all";
+let activeSeries = "all";
 let searchTerm   = "";
+
+const liveVideos = videos.filter(v => !v.comingSoon);
+
+document.getElementById("header-sub").textContent =
+  `${liveVideos.length} videos · tap to watch on YouTube`;
 
 function renderGrid() {
   const grid = document.getElementById("grid");
-  const filtered = exercises.filter(e => {
-    const matchFilter = activeFilter === "all" || e.tags.includes(activeFilter);
-    const matchSearch = e.name.toLowerCase().includes(searchTerm);
-    return matchFilter && matchSearch;
+  const filtered = videos.filter(v => {
+    const matchCat    = activeCat === "all" || v.tags.includes(activeCat);
+    const matchSeries = activeSeries === "all" || v.series === activeSeries;
+    const matchSearch = v.name.toLowerCase().includes(searchTerm);
+    return matchCat && matchSeries && matchSearch;
   });
 
+  const liveCount   = filtered.filter(v => !v.comingSoon).length;
+  const totalShown  = filtered.length;
+  const totalLive   = videos.filter(v => !v.comingSoon).length;
+
   document.getElementById("count").textContent =
-    filtered.length === exercises.length
-      ? `Showing all ${exercises.length} exercises`
-      : `Showing ${filtered.length} of ${exercises.length} exercises`;
+    totalShown === videos.length
+      ? `Showing all ${totalLive} videos`
+      : `Showing ${liveCount} video${liveCount !== 1 ? "s" : ""}${filtered.some(v=>v.comingSoon) ? ` + ${filtered.filter(v=>v.comingSoon).length} coming soon` : ""}`;
 
   if (filtered.length === 0) {
-    grid.innerHTML = `<p class="empty">No exercises match your search.</p>`;
+    grid.innerHTML = `<p class="empty">No videos match your search.</p>`;
     return;
   }
 
-  grid.innerHTML = filtered.map(e => `
-    <a class="card" href="https://www.youtube.com/watch?v=${e.id}" target="_blank" rel="noopener">
-      <div class="thumb">
-        <img src="https://img.youtube.com/vi/${e.id}/mqdefault.jpg" alt="${e.name}" loading="lazy" />
-        <div class="thumb-overlay">
-          <div class="play-circle">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+  grid.innerHTML = filtered.map(v => {
+    if (v.comingSoon) {
+      return `
+        <div class="card coming-soon">
+          <div class="coming-soon-thumb"><span class="coming-soon-label">Coming Soon</span></div>
+          <div class="card-body">
+            <p class="card-name">${v.name}</p>
+            <div class="tag-row">
+              <span class="tag tag-series">${seriesLabels[v.series]}</span>
+            </div>
+          </div>
+        </div>`;
+    }
+    return `
+      <a class="card" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
+        <div class="thumb">
+          <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.name}" loading="lazy" />
+          <div class="thumb-overlay">
+            <div class="play-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="card-body">
-        <p class="card-name">${e.name}</p>
-        <div class="tag-row">
-          ${e.tags.map(t => `<span class="tag ${tagClass[t]}">${tagLabels[t]}</span>`).join("")}
+        <div class="card-body">
+          <p class="card-name">${v.name}</p>
+          <div class="tag-row">
+            ${v.series !== "fundamentals" ? `<span class="tag tag-series">${seriesLabels[v.series]}</span>` : ""}
+            ${v.tags.map(t => `<span class="tag ${tagClass[t]}">${tagLabels[t]}</span>`).join("")}
+          </div>
         </div>
-      </div>
-    </a>
-  `).join("");
+      </a>`;
+  }).join("");
 }
 
-// Filter pills
-document.getElementById("filters").addEventListener("click", e => {
+document.getElementById("cat-filters").addEventListener("click", e => {
   const btn = e.target.closest(".pill");
   if (!btn) return;
-  activeFilter = btn.dataset.filter;
-  document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+  activeCat = btn.dataset.filter;
+  document.querySelectorAll("#cat-filters .pill").forEach(p => p.classList.remove("active"));
   btn.classList.add("active");
   renderGrid();
 });
 
-// Search
+document.getElementById("series-filters").addEventListener("click", e => {
+  const btn = e.target.closest(".pill");
+  if (!btn) return;
+  activeSeries = btn.dataset.series;
+  document.querySelectorAll("#series-filters .pill").forEach(p => p.classList.remove("active","series-active"));
+  btn.classList.add(activeSeries === "all" ? "active" : "series-active");
+  renderGrid();
+});
+
 document.getElementById("search").addEventListener("input", e => {
   searchTerm = e.target.value.toLowerCase();
   renderGrid();
