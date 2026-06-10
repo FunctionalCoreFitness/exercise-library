@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise Library · Functional Core Fitness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0f1e2e;
+      --steel:   #4A7EC7;
+      --silver:  #c8cdd4;
+      --off-white: #f2f3f5;
+      --card-bg: #162537;
+      --tag-core-bg: #1a3a28; --tag-core: #5ecb8a;
+      --tag-upper-bg: #1a2e45; --tag-upper: #6aacef;
+      --tag-lower-bg: #2a1f10; --tag-lower: #e0a04a;
+      --tag-stab-bg: #251a35; --tag-stab: #b48af5;
+      --tag-mob-bg: #1f2a1a; --tag-mob: #85d45a;
+    }
+
+    body {
+      background: var(--navy);
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      padding: 2.5rem 2rem 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .header-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 6px;
+    }
+    .header-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(44px, 8vw, 80px);
+      line-height: 0.95;
+      color: var(--off-white);
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+    .header-title span { color: var(--steel); }
+    .header-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      color: var(--silver);
+      margin-bottom: 2rem;
+    }
+
+    /* CONTROLS */
+    .controls {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem 1.5rem;
+    }
+    .search-wrap {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--silver);
+      pointer-events: none;
+    }
+    .search-wrap input {
+      width: 100%;
+      max-width: 420px;
+      padding: 10px 14px 10px 40px;
+      background: var(--card-bg);
+      border: 1px solid #243650;
+      border-radius: 6px;
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 15px;
+    }
+    .search-wrap input::placeholder { color: var(--silver); opacity: 0.6; }
+    .search-wrap input:focus { outline: none; border-color: var(--steel); }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .pill {
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid #243650;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      background: transparent;
+      color: var(--silver);
+      transition: all 0.15s;
+    }
+    .pill:hover { border-color: var(--steel); color: var(--off-white); }
+    .pill.active { background: var(--steel); border-color: var(--steel); color: #fff; }
+
+    .count {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      color: var(--silver);
+      opacity: 0.7;
+    }
+
+    /* DIVIDER */
+    .divider {
+      max-width: 1100px;
+      margin: 0 auto 1.5rem;
+      padding: 0 2rem;
+      border: none;
+      border-top: 1px solid #1e3250;
+    }
+
+    /* GRID */
+    .grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    /* CARD */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid #1e3250;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .card:hover { transform: translateY(-3px); border-color: var(--steel); }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      position: relative;
+      overflow: hidden;
+      background: #0a1520;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 21, 32, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .card:hover .thumb-overlay { opacity: 1; }
+    .play-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--steel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-circle svg { margin-left: 3px; }
+
+    .card-body { padding: 12px 14px 14px; }
+    .card-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--off-white);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .tag-row { display: flex; gap: 5px; flex-wrap: wrap; }
+    .tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .tag-core    { background: var(--tag-core-bg);  color: var(--tag-core); }
+    .tag-upper   { background: var(--tag-upper-bg); color: var(--tag-upper); }
+    .tag-lower   { background: var(--tag-lower-bg); color: var(--tag-lower); }
+    .tag-stability { background: var(--tag-stab-bg); color: var(--tag-stab); }
+    .tag-mobility  { background: var(--tag-mob-bg);  color: var(--tag-mob); }
+
+    /* EMPTY STATE */
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 0;
+      color: var(--silver);
+      opacity: 0.5;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1.5rem 2rem 2.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      color: var(--silver);
+      opacity: 0.4;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 600px) {
+      header, .controls, .grid { padding-left: 1rem; padding-right: 1rem; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="header-eyebrow">Functional Core Fitness · Coach Omar Lima</p>
+  <h1 class="header-title">Exercise<br><span>Library</span></h1>
+  <p class="header-sub">18 exercises · tap to watch on YouTube</p>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="search" placeholder="Search exercises…" autocomplete="off" />
+  </div>
+  <div class="filters" id="filters">
+    <button class="pill active" data-filter="all">All</button>
+    <button class="pill" data-filter="core">Core</button>
+    <button class="pill" data-filter="upper">Upper Body</button>
+    <button class="pill" data-filter="lower">Lower Body</button>
+    <button class="pill" data-filter="stability">Stability</button>
+  </div>
+  <p class="count" id="count">Showing 18 exercises</p>
+</div>
+
+<hr class="divider" />
+
+<div class="grid" id="grid"></div>
+
+<footer>FUNCTIONAL CORE FITNESS &nbsp;·&nbsp; MOUNTAIN VIEW, CA &nbsp;·&nbsp; youtube.com/@FunctionalCoreFitness</footer>
+
+<script>
+const exercises = [
+  { name: "Push-Up",                    id: "cOHvJvKhbIo", tags: ["upper"] },
+  { name: "Banded Side-to-Side Walks",  id: "Vtactv6CVbA", tags: ["lower"] },
+  { name: "Deceleration Squats",        id: "xKX841sMnIk", tags: ["lower"] },
+  { name: "Kneeling to Tall Kneeling",  id: "3z72ZfGDXXw", tags: ["lower"] },
+  { name: "Single-Leg RDL",             id: "4nIUUVuuOr4", tags: ["lower"] },
+  { name: "Single-Leg Forward Reach",   id: "xYtrS20PP_0", tags: ["lower","stability"] },
+  { name: "Lunge",                      id: "4_G9-JLud6U", tags: ["lower"] },
+  { name: "Hip Hinge",                  id: "QojJl6xChfY", tags: ["lower"] },
+  { name: "Single-Leg Alphabet Trace",  id: "HCP0Ff2drVE", tags: ["lower","stability"] },
+  { name: "Bridge March",               id: "Ydbdd7m7-W4", tags: ["lower"] },
+  { name: "Heel Slide",                 id: "e3lxOV2Z9J8", tags: ["core"] },
+  { name: "Bent-Knee Fallout",          id: "J6EdMjlfHmc", tags: ["core"] },
+  { name: "Pallof Press",               id: "toesHgIHcgo", tags: ["core"] },
+  { name: "Leg Lowers",                 id: "cyR2dI936yQ", tags: ["core"] },
+  { name: "Dead Bug Hold",              id: "DYf9ozrQ8-M", tags: ["core"] },
+  { name: "Bird Dog",                   id: "rDerTS524Og", tags: ["core"] },
+  { name: "Plank",                      id: "n141yZWEmn0", tags: ["core"] },
+  { name: "Side Plank",                 id: "dWntXGJ4cFg", tags: ["core"] },
+];
+
+const tagLabels = { core: "Core", upper: "Upper Body", lower: "Lower Body", stability: "Stability", mobility: "Mobility" };
+const tagClass  = { core: "tag-core", upper: "tag-upper", lower: "tag-lower", stability: "tag-stability", mobility: "tag-mobility" };
+
+let activeFilter = "all";
+let searchTerm   = "";
+
+function renderGrid() {
+  const grid = document.getElementById("grid");
+  const filtered = exercises.filter(e => {
+    const matchFilter = activeFilter === "all" || e.tags.includes(activeFilter);
+    const matchSearch = e.name.toLowerCase().includes(searchTerm);
+    return matchFilter && matchSearch;
+  });
+
+  document.getElementById("count").textContent =
+    filtered.length === exercises.length
+      ? `Showing all ${exercises.length} exercises`
+      : `Showing ${filtered.length} of ${exercises.length} exercises`;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<p class="empty">No exercises match your search.</p>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(e => `
+    <a class="card" href="https://www.youtube.com/watch?v=${e.id}" target="_blank" rel="noopener">
+      <div class="thumb">
+        <img src="https://img.youtube.com/vi/${e.id}/mqdefault.jpg" alt="${e.name}" loading="lazy" />
+        <div class="thumb-overlay">
+          <div class="play-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-name">${e.name}</p>
+        <div class="tag-row">
+          ${e.tags.map(t => `<span class="tag ${tagClass[t]}">${tagLabels[t]}</span>`).join("")}
+        </div>
+      </div>
+    </a>
+  `).join("");
+}
+
+// Filter pills
+document.getElementById("filters").addEventListener("click", e => {
+  const btn = e.target.closest(".pill");
+  if (!btn) return;
+  activeFilter = btn.dataset.filter;
+  document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+  btn.classList.add("active");
+  renderGrid();
+});
+
+// Search
+document.getElementById("search").addEventListener("input", e => {
+  searchTerm = e.target.value.toLowerCase();
+  renderGrid();
+});
+
+renderGrid();
+</script>
+</body>
+</html>
