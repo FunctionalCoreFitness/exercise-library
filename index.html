@@ -263,19 +263,8 @@
       letter-spacing: 0.05em;
     }
 
-    .back-link {
-      display: inline-block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--steel);
-      text-decoration: none;
-      margin-bottom: 1rem;
-      opacity: 0.8;
-      transition: opacity 0.15s;
-    }
-    .back-link:hover { opacity: 1; }
+    .logo-link { display: inline-block; margin-bottom: 1rem; }
+    .header-logo { height: 48px; width: auto; display: block; }
 
     .series-select-wrap {
       margin-bottom: 1rem;
@@ -306,7 +295,9 @@
 <body>
 
 <header>
-  <a href="https://functionalcorefitness.net" class="back-link">← functionalcorefitness.net</a>
+  <a href="https://functionalcorefitness.net" class="logo-link">
+    <img src="./IMG_5834.jpeg" alt="Functional Core Fitness" class="header-logo" />
+  </a>
   <p class="header-eyebrow">Functional Core Fitness · Coach Omar Lima</p>
   <h1 class="header-title">Exercise<br><span>Library</span></h1>
   <p class="header-sub" id="header-sub">Loading…</p>
