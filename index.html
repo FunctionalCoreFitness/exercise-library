@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exercise Library · Functional Core Fitness</title>
+  <title>Exercise Library ¬∑ Functional Core Fitness</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@400;500&display=swap" rel="stylesheet" />
@@ -287,6 +287,7 @@
     }
     .series-select-wrap select:focus { outline: none; border-color: var(--steel); }
     .series-select-wrap select option { background: #162537; }
+    @media (max-width: 600px) {
       header, .controls, .grid { padding-left: 1rem; padding-right: 1rem; }
       .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
     }
@@ -298,15 +299,15 @@
   <a href="https://functionalcorefitness.net" class="logo-link">
     <img src="./fcf-logo.png" alt="Functional Core Fitness" class="header-logo" />
   </a>
-  <p class="header-eyebrow">Functional Core Fitness · Coach Omar Lima</p>
+  <p class="header-eyebrow">Functional Core Fitness ¬∑ Coach Omar Lima</p>
   <h1 class="header-title">Exercise<br><span>Library</span></h1>
-  <p class="header-sub" id="header-sub">Loading…</p>
+  <p class="header-sub" id="header-sub">Loading‚Ä¶</p>
 </header>
 
 <div class="controls">
   <div class="search-wrap">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" id="search" placeholder="Search exercises…" autocomplete="off" />
+    <input type="text" id="search" placeholder="Search exercises‚Ä¶" autocomplete="off" />
   </div>
 
   <p class="filter-label">Category</p>
@@ -336,7 +337,7 @@
 
 <hr class="divider" />
 <div class="grid" id="grid"></div>
-<footer>FUNCTIONAL CORE FITNESS &nbsp;·&nbsp; MOUNTAIN VIEW, CA &nbsp;·&nbsp; youtube.com/@FunctionalCoreFitness</footer>
+<footer>FUNCTIONAL CORE FITNESS &nbsp;¬∑&nbsp; MOUNTAIN VIEW, CA &nbsp;¬∑&nbsp; youtube.com/@FunctionalCoreFitness</footer>
 
 <script>
 const tagLabels = { core: "Core", upper: "Upper Body", lower: "Lower Body", stability: "Stability", mobility: "Mobility" };
@@ -352,7 +353,7 @@ const seriesLabels = {
 };
 
 const videos = [
-  // FUNDAMENTALS
+  // MOVEMENT FOUNDATIONS FOR BEGINNERS
   { name: "Push-Up",                   id: "cOHvJvKhbIo", tags: ["upper"],             series: "fundamentals" },
   { name: "Banded Side-to-Side Walks", id: "Vtactv6CVbA", tags: ["lower"],             series: "fundamentals" },
   { name: "Deceleration Squats",       id: "xKX841sMnIk", tags: ["lower"],             series: "fundamentals" },
@@ -391,34 +392,34 @@ const videos = [
   { name: "Sit-to-Stand for Beginners | Stand Up with Strength & Control | Ep. 6",          id: "oUdWdspFwaY", tags: ["lower","stability"], series: "independence" },
   { name: "Step-Ups for Beginners | Climb Stairs with Strength & Balance | Ep. 7",          id: "OnxuKIxeXhI", tags: ["lower","stability"], series: "independence" },
   { name: "Single-Leg Balance & Forward Reach | Prevent Falls & Improve Stability | Ep. 8", id: "pt0f7raInM8", tags: ["lower","stability"], series: "independence" },
-  { name: "Lateral Steps for Beginners | Move Side-to-Side with Confidence | Ep. 9",        id: null,          tags: ["lower","stability"], series: "independence", comingSoon: true },
-  { name: "Hip Hinge for Beginners | Learn to Bend & Lift Safely | Ep. 10",                 id: null,          tags: ["lower"],             series: "independence", comingSoon: true },
-  { name: "Farmer Carry for Beginners | Build Real-World Strength & Posture | Ep. 11",      id: null,          tags: ["lower"],             series: "independence", comingSoon: true },
-  { name: "Pallof Press for Beginners | Build Core Stability for Daily Life | Ep. 12",      id: null,          tags: ["core"],              series: "independence", comingSoon: true },
-  { name: "Walking Mechanics for Beginners | Improve Balance & Walking Efficiency | Ep. 13",id: null,          tags: ["mobility"],          series: "independence", comingSoon: true },
+  { name: "Lateral Steps for Beginners | Move Side-to-Side with Confidence | Ep. 9",        id: "2XI79q1112Q", tags: ["lower","stability"], series: "independence" },
+  { name: "Hip Hinge for Beginners | Learn to Bend & Lift Safely | Ep. 10",                 id: "_8zseLVN7eo", tags: ["lower"],             series: "independence" },
+  { name: "Farmer Carry for Beginners | Build Real-World Strength & Posture | Ep. 11",      id: "9DdOgGxLHy8", tags: ["lower"],             series: "independence" },
+  { name: "Pallof Press for Beginners | Build Core Stability for Daily Life | Ep. 12",      id: "MP7UcvP3c48", tags: ["core"],              series: "independence" },
+  { name: "Walking Mechanics for Beginners | Improve Balance & Walking Efficiency | Ep. 13",id: "JUMs0f5Yd4E", tags: ["mobility"],          series: "independence" },
 
   // AGILITY LADDER
-  { name: "Agility Ladder Beginner | Footwork & Coordination (Part 1)",      id: "SqEJue9KOL4", tags: ["lower","stability"], series: "ladder" },
-  { name: "Agility Ladder Intermediate | Speed & Coordination (Part 2)",     id: "4SZZOQOhpHA", tags: ["lower","stability"], series: "ladder" },
-  { name: "Agility Ladder Advanced | Explosive Power & Conditioning (Part 3)",id: "5hgzMgpEjmw", tags: ["lower","stability"], series: "ladder" },
-  { name: "10-Min Ladder for Beginners | Sagittal Plane Basics",             id: "wHHMYmKuw1s", tags: ["lower","stability"], series: "ladder" },
-  { name: "10-Min Ladder for Beginners | Frontal Plane Focus",               id: "QRorkNTb2Mw", tags: ["lower","stability"], series: "ladder" },
-  { name: "10-Min Ladder for Beginners | Transverse Plane Focus",            id: "KxdXJh9AlOo", tags: ["lower","stability"], series: "ladder" },
+  { name: "Agility Ladder Beginner | Footwork & Coordination (Part 1)",       id: "SqEJue9KOL4", tags: ["lower","stability"], series: "ladder" },
+  { name: "Agility Ladder Intermediate | Speed & Coordination (Part 2)",      id: "4SZZOQOhpHA", tags: ["lower","stability"], series: "ladder" },
+  { name: "Agility Ladder Advanced | Explosive Power & Conditioning (Part 3)", id: "5hgzMgpEjmw", tags: ["lower","stability"], series: "ladder" },
+  { name: "10-Min Ladder for Beginners | Sagittal Plane Basics",              id: "wHHMYmKuw1s", tags: ["lower","stability"], series: "ladder" },
+  { name: "10-Min Ladder for Beginners | Frontal Plane Focus",                id: "QRorkNTb2Mw", tags: ["lower","stability"], series: "ladder" },
+  { name: "10-Min Ladder for Beginners | Transverse Plane Focus",             id: "KxdXJh9AlOo", tags: ["lower","stability"], series: "ladder" },
 
   // SMR FOR GRAPPLERS
-  { name: "Chest Tight from Rolling? SMR for BJJ Grapplers",        id: "dZBTCOKcL1A", tags: ["upper","mobility"], series: "smr" },
-  { name: "Shoulder Tight After Jiu-Jitsu? Teres SMR for Grapplers",id: "044vTs2fD0g", tags: ["upper","mobility"], series: "smr" },
-  { name: "Rounded Upper Back from Grappling? T-Spine SMR for BJJ", id: "7mhAByS79Qw", tags: ["upper","mobility"], series: "smr" },
-  { name: "Lat Tight from Guard Work? SMR for Jiu-Jitsu Athletes",  id: "M1mwy5hLR1c", tags: ["upper","mobility"], series: "smr" },
-  { name: "Neck Tight After Rolling? Stretches for BJJ Grapplers",  id: "S8pdbOJhO-A", tags: ["upper","mobility"], series: "smr" },
-  { name: "Tight Hips from Guard? Hip Flexor Recovery for Grapplers",id:"Qp_WrJgkAIs", tags: ["lower","mobility"], series: "smr" },
+  { name: "Chest Tight from Rolling? SMR for BJJ Grapplers",         id: "dZBTCOKcL1A", tags: ["upper","mobility"], series: "smr" },
+  { name: "Shoulder Tight After Jiu-Jitsu? Teres SMR for Grapplers", id: "044vTs2fD0g", tags: ["upper","mobility"], series: "smr" },
+  { name: "Rounded Upper Back from Grappling? T-Spine SMR for BJJ",  id: "7mhAByS79Qw", tags: ["upper","mobility"], series: "smr" },
+  { name: "Lat Tight from Guard Work? SMR for Jiu-Jitsu Athletes",   id: "M1mwy5hLR1c", tags: ["upper","mobility"], series: "smr" },
+  { name: "Neck Tight After Rolling? Stretches for BJJ Grapplers",   id: "S8pdbOJhO-A", tags: ["upper","mobility"], series: "smr" },
+  { name: "Tight Hips from Guard? Hip Flexor Recovery for Grapplers",id: "Qp_WrJgkAIs", tags: ["lower","mobility"], series: "smr" },
 
   // STICK MOBILITY
-  { name: "Stick Mobility Basics #1 | Ankle, Hip & Shoulder Foundation", id: "bh3s_YNToDg", tags: ["mobility"], series: "stick" },
+  { name: "Stick Mobility Basics #1 | Ankle, Hip & Shoulder Foundation", id: "bh3s_YNToDg", tags: ["mobility"],        series: "stick" },
   { name: "Stick Mobility Basics #2 | Core Activation & Hip Control",    id: "gwM0CR6oLKo", tags: ["core","mobility"], series: "stick" },
 
   // IRONMAN
-  { name: "IRONMAN California 140.6 | My 45th Birthday Race – Trailer", id: "OYzwbsYvzrY", tags: [], series: "ironman" },
+  { name: "IRONMAN California 140.6 | My 45th Birthday Race ‚Äì Trailer", id: "OYzwbsYvzrY", tags: [], series: "ironman" },
   { name: "I Completed My First Ironman on My 45th Birthday (140.6 Mi)",id: "L4LI_w0wzx0", tags: [], series: "ironman" },
 ];
 
@@ -429,7 +430,7 @@ let searchTerm   = "";
 const liveVideos = videos.filter(v => !v.comingSoon);
 
 document.getElementById("header-sub").textContent =
-  `${liveVideos.length} videos · tap to watch on YouTube`;
+  `${liveVideos.length} videos ¬∑ tap to watch on YouTube`;
 
 function renderGrid() {
   const grid = document.getElementById("grid");
@@ -440,14 +441,13 @@ function renderGrid() {
     return matchCat && matchSeries && matchSearch;
   });
 
-  const liveCount   = filtered.filter(v => !v.comingSoon).length;
-  const totalShown  = filtered.length;
-  const totalLive   = videos.filter(v => !v.comingSoon).length;
+  const liveCount  = filtered.filter(v => !v.comingSoon).length;
+  const totalShown = filtered.length;
 
   document.getElementById("count").textContent =
     totalShown === videos.length
-      ? `Showing all ${totalLive} videos`
-      : `Showing ${liveCount} video${liveCount !== 1 ? "s" : ""}${filtered.some(v=>v.comingSoon) ? ` + ${filtered.filter(v=>v.comingSoon).length} coming soon` : ""}`;
+      ? `Showing all ${liveVideos.length} videos`
+      : `Showing ${liveCount} video${liveCount !== 1 ? "s" : ""}`;
 
   if (filtered.length === 0) {
     grid.innerHTML = `<p class="empty">No videos match your search.</p>`;
