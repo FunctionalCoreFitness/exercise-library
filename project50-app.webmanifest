@@ -1,0 +1,14 @@
+{
+  "name": "Project 50",
+  "short_name": "Project 50",
+  "description": "Personal quick-reference viewer for the Project 50 ultra-marathon training series.",
+  "start_url": "./project50-app.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a1628",
+  "theme_color": "#0a1628",
+  "icons": [
+    { "src": "./project50-icons/icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "./project50-icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
