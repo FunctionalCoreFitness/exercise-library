@@ -2,521 +2,509 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exercise Library ¬∑ Functional Core Fitness</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Exercise Library · Functional Core Fitness</title>
+  <meta name="description" content="Free exercise tutorials from Coach Omar Lima at Functional Core Fitness — core, strength, mobility, balance and independence-focused movement." />
+  <meta name="theme-color" content="#0a1628" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Functional Core Fitness" />
+  <meta property="og:title" content="Exercise Library · Functional Core Fitness" />
+  <meta property="og:description" content="Free exercise tutorials from Coach Omar Lima — search by body area, series or goal." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a1628'/%3E%3Ctext x='32' y='44' font-family='Arial Narrow,Arial' font-weight='700' font-size='30' text-anchor='middle' fill='%23f5a623'%3EFCF%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-86LMLPZE5K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-86LMLPZE5K');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy:    #0f1e2e;
-      --steel:   #4A7EC7;
-      --silver:  #c8cdd4;
+      --navy: #0a1628;
+      --steel: #4A7EC7;
+      --accent: #2d7dd2;
+      --gold: #f5a623;
+      --gold-light: #ffd06b;
+      --silver: #c8d4e8;
       --off-white: #f2f3f5;
-      --card-bg: #162537;
+      --card-bg: rgba(255,255,255,0.04);
+      --line: rgba(255,255,255,0.09);
       --tag-core-bg: #1a3a28; --tag-core: #5ecb8a;
       --tag-upper-bg: #1a2e45; --tag-upper: #6aacef;
       --tag-lower-bg: #2a1f10; --tag-lower: #e0a04a;
       --tag-stab-bg: #251a35; --tag-stab: #b48af5;
       --tag-mob-bg: #1f2a1a; --tag-mob: #85d45a;
     }
+    body { background: var(--navy); color: var(--off-white); font-family: 'Barlow', sans-serif; min-height: 100vh; -webkit-tap-highlight-color: transparent; }
+    button, input, select { font: inherit; color: inherit; }
+    .bg-grid { position: fixed; inset: 0; background-image: linear-gradient(rgba(45,125,210,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(45,125,210,0.06) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+    .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-    body {
-      background: var(--navy);
-      color: var(--off-white);
-      font-family: 'Barlow', sans-serif;
-      min-height: 100vh;
-    }
-
-    header {
-      padding: 2.5rem 2rem 0;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .header-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--steel);
-      margin-bottom: 6px;
-    }
-    .header-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(44px, 8vw, 80px);
-      line-height: 0.95;
-      color: var(--off-white);
-      letter-spacing: 0.02em;
-      margin-bottom: 8px;
-    }
+    header { padding: 2rem 0 0; }
+    .top-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .logo-link { display: inline-block; background:#fff;border-radius:10px;padding:6px 12px;box-shadow:0 4px 18px rgba(0,0,0,.35); }
+    .logo-link img { height: 38px; width: auto; display: block; }
+    .top-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .top-link { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--silver); text-decoration: none; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; transition: all .15s; }
+    .top-link:hover { color: #fff; border-color: var(--steel); }
+    .top-link.gold { color: var(--navy); background: var(--gold); border-color: var(--gold); }
+    .header-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--steel); margin-bottom: 6px; }
+    .header-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 8vw, 84px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 8px; }
     .header-title span { color: var(--steel); }
-    .header-sub {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 15px;
-      color: var(--silver);
-      margin-bottom: 2rem;
-    }
+    .header-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; color: var(--silver); margin-bottom: 1.5rem; }
 
-    .controls {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem 1.5rem;
-    }
-    .search-wrap {
-      position: relative;
-      margin-bottom: 1rem;
-    }
-    .search-wrap svg {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--silver);
-      pointer-events: none;
-    }
-    .search-wrap input {
-      width: 100%;
-      max-width: 420px;
-      padding: 10px 14px 10px 40px;
-      background: var(--card-bg);
-      border: 1px solid #243650;
-      border-radius: 6px;
-      color: var(--off-white);
-      font-family: 'Barlow', sans-serif;
-      font-size: 15px;
-    }
+    /* This week banner */
+    .eotw { display: flex; align-items: center; gap: 16px; text-decoration: none; color: inherit; background: linear-gradient(135deg, rgba(245,166,35,0.16) 0%, rgba(10,22,40,0.9) 70%); border: 1px solid rgba(245,166,35,0.35); border-radius: 14px; padding: 14px; margin-bottom: 1.75rem; transition: transform .15s, border-color .15s; }
+    .eotw:hover { transform: translateY(-2px); border-color: var(--gold); }
+    .eotw img { width: 132px; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; flex-shrink: 0; background: #0a1520; }
+    .eotw-kicker { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .eotw-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 4vw, 2.3rem); letter-spacing: 0.04em; line-height: 1; margin: 2px 0 4px; }
+    .eotw-cta { font-size: 0.85rem; color: var(--silver); }
+    @media (max-width: 520px) { .eotw img { width: 96px; } }
+
+    .controls { padding-bottom: 1.25rem; }
+    .search-wrap { position: relative; margin-bottom: 1rem; max-width: 460px; }
+    .search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--silver); pointer-events: none; }
+    .search-wrap input { width: 100%; padding: 12px 14px 12px 40px; background: var(--card-bg); border: 1px solid #243650; border-radius: 10px; font-size: 16px; }
     .search-wrap input::placeholder { color: var(--silver); opacity: 0.6; }
     .search-wrap input:focus { outline: none; border-color: var(--steel); }
-
-    .filter-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--silver);
-      opacity: 0.5;
-      margin-bottom: 6px;
-    }
-
-    .filters {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 1.25rem;
-    }
-    .pill {
-      padding: 6px 16px;
-      border-radius: 999px;
-      border: 1px solid #243650;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      cursor: pointer;
-      background: transparent;
-      color: var(--silver);
-      transition: all 0.15s;
-    }
+    .filter-row { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 1rem; }
+    .filter-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--silver); opacity: 0.6; margin-bottom: 6px; }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill { padding: 8px 16px; min-height: 38px; border-radius: 999px; border: 1px solid #243650; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; background: transparent; color: var(--silver); transition: all 0.15s; }
     .pill:hover { border-color: var(--steel); color: var(--off-white); }
     .pill.active { background: var(--steel); border-color: var(--steel); color: #fff; }
-    .pill.series-active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+    .pill small { opacity: .6; margin-left: 4px; font-weight: 500; }
+    .series-select { padding: 9px 36px 9px 14px; min-height: 38px; background: rgba(255,255,255,0.04); border: 1px solid #243650; border-radius: 10px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c8cdd4' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; min-width: 260px; }
+    .series-select:focus { outline: none; border-color: var(--steel); }
+    .series-select option { background: #162537; }
+    .count-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .count { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; color: var(--silver); opacity: 0.8; }
+    .clear-btn { background: none; border: none; color: var(--gold); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; cursor: pointer; display: none; }
+    .clear-btn.show { display: inline; }
+    .divider { border: none; border-top: 1px solid #1e3250; margin-bottom: 1.5rem; }
 
-    .count {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 13px;
-      color: var(--silver);
-      opacity: 0.7;
-      margin-top: 0.25rem;
-    }
-
-    .divider {
-      max-width: 1100px;
-      margin: 0 auto 1.5rem;
-      padding: 0 2rem;
-      border: none;
-      border-top: 1px solid #1e3250;
-    }
-
-    .grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem 3rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid #1e3250;
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: pointer;
-      text-decoration: none;
-      display: block;
-      transition: transform 0.15s, border-color 0.15s;
-    }
+    .section-head { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 10px; margin-top: 8px; }
+    .section-head h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: .04em; font-weight: 400; }
+    .section-head span { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; color: var(--silver); opacity: .7; }
+    .grid { padding-bottom: 3rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+    .card { background: var(--card-bg); border: 1px solid #1e3250; border-radius: 12px; overflow: hidden; cursor: pointer; display: block; text-align: left; padding: 0; width: 100%; transition: transform 0.15s, border-color 0.15s; }
     .card:hover { transform: translateY(-3px); border-color: var(--steel); }
-    .card.coming-soon { opacity: 0.5; cursor: default; pointer-events: none; }
-
-    .thumb {
-      width: 100%;
-      aspect-ratio: 16/9;
-      position: relative;
-      overflow: hidden;
-      background: #0a1520;
-    }
-    .thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .thumb-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(10, 21, 32, 0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.15s;
-    }
-    .card:hover .thumb-overlay { opacity: 1; }
-    .play-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--steel);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    .card:focus-visible, .pill:focus-visible, .eotw:focus-visible, .top-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .thumb { width: 100%; aspect-ratio: 16/9; position: relative; overflow: hidden; background: #0a1520; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .thumb-overlay { position: absolute; inset: 0; background: rgba(10,21,32,0.35); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.15s; }
+    .card:hover .thumb-overlay, .card:focus-visible .thumb-overlay { opacity: 1; }
+    .play-circle { width: 46px; height: 46px; border-radius: 50%; background: var(--steel); display: flex; align-items: center; justify-content: center; }
     .play-circle svg { margin-left: 3px; }
-
-    .coming-soon-thumb {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: #0d1c2e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid #1e3250;
-    }
-    .coming-soon-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--silver);
-      opacity: 0.4;
-    }
-
+    .ep-badge, .now-badge { position: absolute; top: 8px; left: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; background: rgba(10,22,40,.85); color: #fff; }
+    .now-badge { left: auto; right: 8px; background: var(--gold); color: var(--navy); }
     .card-body { padding: 12px 14px 14px; }
-    .card-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--off-white);
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
+    .card-name { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 600; color: var(--off-white); line-height: 1.15; }
+    .card-sub { font-size: 13px; color: var(--silver); opacity: .85; margin: 3px 0 9px; line-height: 1.3; }
     .tag-row { display: flex; gap: 5px; flex-wrap: wrap; }
-    .tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-    .tag-core      { background: var(--tag-core-bg);  color: var(--tag-core); }
-    .tag-upper     { background: var(--tag-upper-bg); color: var(--tag-upper); }
-    .tag-lower     { background: var(--tag-lower-bg); color: var(--tag-lower); }
-    .tag-stability { background: var(--tag-stab-bg);  color: var(--tag-stab); }
-    .tag-mobility  { background: var(--tag-mob-bg);   color: var(--tag-mob); }
-    .tag-series    { background: #2d1f4e; color: #c4a8ff; }
+    .tag { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; }
+    .tag-core { background: var(--tag-core-bg); color: var(--tag-core); }
+    .tag-upper { background: var(--tag-upper-bg); color: var(--tag-upper); }
+    .tag-lower { background: var(--tag-lower-bg); color: var(--tag-lower); }
+    .tag-stability { background: var(--tag-stab-bg); color: var(--tag-stab); }
+    .tag-mobility { background: var(--tag-mob-bg); color: var(--tag-mob); }
+    .tag-series { background: #2d1f4e; color: #c4a8ff; }
+    .empty { grid-column: 1 / -1; text-align: center; padding: 4rem 0; color: var(--silver); opacity: 0.7; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; }
 
-    .empty {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 4rem 0;
-      color: var(--silver);
-      opacity: 0.5;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 18px;
-    }
+    .join { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; background: linear-gradient(135deg, rgba(26,58,107,0.8) 0%, rgba(10,22,40,0.9) 100%); border: 1px solid rgba(45,125,210,0.3); border-radius: 14px; padding: 20px 22px; margin-bottom: 2rem; }
+    .join h3 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 1.6rem; letter-spacing: .05em; color: var(--gold); }
+    .join p { font-size: .9rem; color: var(--silver); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .95rem; padding: 12px 20px; border-radius: 10px; }
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-red { background: #ff0000; color: #fff; }
+    footer { text-align: center; padding: 0 0 2.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; color: var(--silver); opacity: 0.5; letter-spacing: 0.05em; }
+    footer a { color: inherit; }
 
-    footer {
-      text-align: center;
-      padding: 1.5rem 2rem 2.5rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 13px;
-      color: var(--silver);
-      opacity: 0.4;
-      letter-spacing: 0.05em;
-    }
+    /* Player */
+    .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 100; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+    .overlay.active { display: flex; }
+    .player { width: 100%; max-width: 960px; background: #0f1e35; border: 1px solid rgba(45,125,210,0.3); border-radius: 16px; overflow: hidden; }
+    .player-video { position: relative; padding-top: 56.25%; background: #000; }
+    .player-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .player-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; flex-wrap: wrap; }
+    .player-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 700; }
+    .player-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .player-btn { background: rgba(255,255,255,0.08); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; cursor: pointer; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .85rem; color: var(--silver); text-decoration: none; }
+    .player-btn:hover { color: #fff; border-color: var(--steel); }
+    .toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); background: rgba(0,0,0,.85); color: #fff; padding: 10px 18px; border-radius: 20px; font-family: 'Barlow Condensed', sans-serif; letter-spacing: .06em; opacity: 0; transition: opacity .25s; pointer-events: none; z-index: 200; }
+    .toast.show { opacity: 1; }
 
-    .logo-link { display: inline-block; margin-bottom: 1rem; }
-    .header-logo { height: 64px; width: auto; display: block; }
-
-    .series-select-wrap {
-      margin-bottom: 1rem;
-    }
-    .series-select-wrap select {
-      padding: 8px 36px 8px 14px;
-      background: var(--card-bg);
-      border: 1px solid #243650;
-      border-radius: 6px;
-      color: var(--off-white);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c8cdd4' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      min-width: 240px;
-    }
-    .series-select-wrap select:focus { outline: none; border-color: var(--steel); }
-    .series-select-wrap select option { background: #162537; }
     @media (max-width: 600px) {
-      header, .controls, .grid { padding-left: 1rem; padding-right: 1rem; }
+      .wrap { padding: 0 1rem; }
       .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+      .card-name { font-size: 16px; }
+      .series-select { min-width: 0; width: 100%; }
+      .filter-row > div { width: 100%; }
     }
+    @media (prefers-reduced-motion: reduce) { .card, .eotw { transition: none; } }
   </style>
 </head>
 <body>
+<div class="bg-grid"></div>
+<div class="wrap">
+  <header>
+    <div class="top-row">
+      <a href="https://functionalcorefitness.com" class="logo-link"><img src="fcf-logo.png" alt="Functional Core Fitness" width="202" height="48" /></a>
+      <nav class="top-links">
+        <a class="top-link gold" href="/Exercise-of-the-week/exercise-of-the-week.html">⚡ Exercise of the Week</a>
+        <a class="top-link" href="/Exercise-of-the-week/join.html">✉️ Join</a>
+      </nav>
+    </div>
+    <p class="header-eyebrow">Functional Core Fitness · Coach Omar Lima</p>
+    <h1 class="header-title">Exercise <span>Library</span></h1>
+    <p class="header-sub" id="header-sub">Loading…</p>
+  </header>
 
-<header>
-  <a href="https://functionalcorefitness.net" class="logo-link">
-    <img src="./fcf-logo.png" alt="Functional Core Fitness" class="header-logo" />
+  <a class="eotw" id="eotw" href="/Exercise-of-the-week/exercise-of-the-week.html" hidden>
+    <img id="eotwImg" alt="" />
+    <div>
+      <div class="eotw-kicker">⚡ This Week's Exercise</div>
+      <div class="eotw-name" id="eotwName"></div>
+      <div class="eotw-cta">See the full breakdown, muscles worked &amp; coach tips →</div>
+    </div>
   </a>
-  <p class="header-eyebrow">Functional Core Fitness ¬∑ Coach Omar Lima</p>
-  <h1 class="header-title">Exercise<br><span>Library</span></h1>
-  <p class="header-sub" id="header-sub">Loading‚Ä¶</p>
-</header>
 
-<div class="controls">
-  <div class="search-wrap">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" id="search" placeholder="Search exercises‚Ä¶" autocomplete="off" />
+  <div class="controls">
+    <div class="search-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="search" placeholder="Search exercises… (e.g. hips, balance, plank)" autocomplete="off" aria-label="Search exercises" />
+    </div>
+    <div class="filter-row">
+      <div>
+        <p class="filter-label">Focus</p>
+        <div class="filters" id="cat-filters"></div>
+      </div>
+      <div>
+        <p class="filter-label">Series</p>
+        <select id="series-select" class="series-select" aria-label="Series"></select>
+      </div>
+    </div>
+    <div class="count-row">
+      <p class="count" id="count"></p>
+      <button class="clear-btn" id="clearBtn" type="button">✕ Clear filters</button>
+    </div>
   </div>
 
-  <p class="filter-label">Category</p>
-  <div class="filters" id="cat-filters">
-    <button class="pill active" data-filter="all">All</button>
-    <button class="pill" data-filter="core">Core</button>
-    <button class="pill" data-filter="upper">Upper Body</button>
-    <button class="pill" data-filter="lower">Lower Body</button>
-    <button class="pill" data-filter="stability">Stability</button>
-  </div>
+  <hr class="divider" />
+  <div class="grid" id="grid"></div>
 
-  <p class="filter-label">Series</p>
-  <div class="series-select-wrap">
-    <select id="series-select">
-      <option value="all">All Series</option>
-      <option value="fundamentals">Movement Foundations for Beginners</option>
-      <option value="independence">Independence Through Movement</option>
-      <option value="ladder">Agility Ladder</option>
-      <option value="smr">SMR for Grapplers</option>
-      <option value="stick">Stick Mobility</option>
-      <option value="ironman">Ironman Race Day</option>
-    </select>
+  <div class="join">
+    <div>
+      <h3>Get a new exercise every week</h3>
+      <p>Tips and movement breakdowns from Coach Omar, straight to your inbox.</p>
+    </div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <a class="btn btn-gold" href="/Exercise-of-the-week/join.html" data-track="join_click">✉️ Join Free</a>
+      <a class="btn btn-red" href="https://www.youtube.com/@FunctionalCoreFitness?sub_confirmation=1" target="_blank" rel="noopener" data-track="subscribe_click">▶ Subscribe</a>
+    </div>
   </div>
-
-  <p class="count" id="count"></p>
+  <footer>FUNCTIONAL CORE FITNESS &nbsp;·&nbsp; MOUNTAIN VIEW &amp; LOS ALTOS, CA &nbsp;·&nbsp; <a href="https://www.youtube.com/@FunctionalCoreFitness" target="_blank" rel="noopener">youtube.com/@FunctionalCoreFitness</a></footer>
 </div>
 
-<hr class="divider" />
-<div class="grid" id="grid"></div>
-<footer>FUNCTIONAL CORE FITNESS &nbsp;¬∑&nbsp; MOUNTAIN VIEW, CA &nbsp;¬∑&nbsp; youtube.com/@FunctionalCoreFitness</footer>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="playerTitle">
+  <div class="player">
+    <div class="player-video"><iframe id="playerFrame" title="Exercise video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="player-bar">
+      <div class="player-title" id="playerTitle"></div>
+      <div class="player-actions">
+        <button class="player-btn" id="shareBtn" type="button">🔗 Share</button>
+        <a class="player-btn" id="ytLink" href="#" target="_blank" rel="noopener">Open on YouTube ↗</a>
+        <button class="player-btn" id="closeBtn" type="button" aria-label="Close video">✕ Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
 
 <script>
-const tagLabels = { core: "Core", upper: "Upper Body", lower: "Lower Body", stability: "Stability", mobility: "Mobility" };
-const tagClass  = { core: "tag-core", upper: "tag-upper", lower: "tag-lower", stability: "tag-stability", mobility: "tag-mobility" };
-
-const seriesLabels = {
+// ============================================================
+// VIDEO LIST
+// To add a video: copy a line and change name, id, tags and series.
+// tags: core, upper, lower, stability, mobility
+// ============================================================
+const seriesInfo = {
+  fundamentals: "Movement Foundations for Beginners",
   independence: "Independence Through Movement",
   ladder:       "Agility Ladder",
   smr:          "SMR for Grapplers",
   stick:        "Stick Mobility",
-  ironman:      "Ironman Race Day",
-  fundamentals: "Movement Foundations for Beginners"
+  project50:    "Project 50",
+  ironman:      "Ironman Race Day"
 };
+const tagLabels = { core: "Core", upper: "Upper Body", lower: "Lower Body", stability: "Stability", mobility: "Mobility" };
 
 const videos = [
-  // MOVEMENT FOUNDATIONS FOR BEGINNERS
-  { name: "Push-Up",                   id: "cOHvJvKhbIo", tags: ["upper"],             series: "fundamentals" },
-  { name: "Banded Side-to-Side Walks", id: "Vtactv6CVbA", tags: ["lower"],             series: "fundamentals" },
-  { name: "Deceleration Squats",       id: "xKX841sMnIk", tags: ["lower"],             series: "fundamentals" },
-  { name: "Kneeling to Tall Kneeling", id: "3z72ZfGDXXw", tags: ["lower"],             series: "fundamentals" },
-  { name: "Single-Leg RDL",            id: "4nIUUVuuOr4", tags: ["lower"],             series: "fundamentals" },
-  { name: "Single-Leg Forward Reach",  id: "xYtrS20PP_0", tags: ["lower","stability"], series: "fundamentals" },
-  { name: "Lunge",                     id: "4_G9-JLud6U", tags: ["lower"],             series: "fundamentals" },
-  { name: "Side Lunge",                id: "r-Qcgb_l4BU", tags: ["lower"],             series: "fundamentals" },
-  { name: "Hip Hinge",                 id: "QojJl6xChfY", tags: ["lower"],             series: "fundamentals" },
-  { name: "Single-Leg Alphabet Trace", id: "HCP0Ff2drVE", tags: ["lower","stability"], series: "fundamentals" },
-  { name: "Bridge March",              id: "Ydbdd7m7-W4", tags: ["lower"],             series: "fundamentals" },
-  { name: "Heel Slide",                id: "e3lxOV2Z9J8", tags: ["core"],              series: "fundamentals" },
-  { name: "Bent-Knee Fallout",         id: "J6EdMjlfHmc", tags: ["core"],              series: "fundamentals" },
-  { name: "Pallof Press",              id: "toesHgIHcgo", tags: ["core"],              series: "fundamentals" },
-  { name: "Leg Lowers",                id: "cyR2dI936yQ", tags: ["core"],              series: "fundamentals" },
-  { name: "Dead Bug Hold",             id: "DYf9ozrQ8-M", tags: ["core"],              series: "fundamentals" },
-  { name: "Bird Dog",                  id: "rDerTS524Og", tags: ["core"],              series: "fundamentals" },
-  { name: "Plank",                     id: "n141yZWEmn0", tags: ["core"],              series: "fundamentals" },
-  { name: "Side Plank",                id: "dWntXGJ4cFg", tags: ["core"],              series: "fundamentals" },
-  { name: "Bridge",                    id: "KwleMZ5V7Ow", tags: ["lower"],             series: "fundamentals" },
-  { name: "Sagittal Plane Training | Build Strength Through Forward Movement",          id: "dHrpTQgPcN0", tags: ["lower","stability"],       series: "fundamentals" },
-  { name: "Frontal Plane Training | Improve Lateral Strength & Balance",                id: "t5X3ggmMrj4", tags: ["lower","stability"],       series: "fundamentals" },
-  { name: "Transverse Plane Training | Improve Rotation & Athletic Movement",           id: "7c7bDodu2-U", tags: ["core","stability"],        series: "fundamentals" },
-  { name: "Band Rotations for Beginners | Improve Core Strength & Rotation",           id: "YKoFzLEFH8w", tags: ["core"],                    series: "fundamentals" },
-  { name: "Multidirectional Lunge with Curl & Overhead Press | Strength, Balance & Coordination", id: "wyPgoHrXBGw", tags: ["lower","upper"], series: "fundamentals" },
-  { name: "TRX Roll Outs | Advanced Core Stability & Strength",                        id: "8pivWnC2VBU", tags: ["core","upper"],            series: "fundamentals" },
-  { name: "Split Stance Squat: Build Balance, Stability & Lower-Body Strength",        id: "07_SRDAsoYI", tags: ["lower","stability"],       series: "fundamentals" },
-  { name: "Project 50 | Week 1: The Starting Line | Building the Foundation to a 100-Mile Ultra", id: "F2Xqs6weGxw", tags: ["lower"],        series: "fundamentals" },
-  { name: "Threading the Needle",      id: "UynTAe9JX9U", tags: ["upper","mobility"],  series: "fundamentals" },
-  { name: "Project 50 | Month 2: The Baseline", id: "StdUHdkD-sc", tags: ["lower"],        series: "fundamentals" },
-  { name: "Bear Crawl Hold",           id: "vpzXA9WDprk", tags: ["core","stability"],  series: "fundamentals" },
-  { name: "Tiger Walk",                id: "I5W_lof7JlM", tags: ["core","mobility"],   series: "fundamentals" },
-  { name: "Inch Worm",                 id: "R_lpI-9mAww", tags: ["core","mobility"],   series: "fundamentals" },
-  { name: "Adductor Rockback",         id: "61Sy4eZ8N_A", tags: ["lower","mobility"],  series: "fundamentals" },
-  { name: "Scapular Push-Up",          id: "NdiKpiaRGv4", tags: ["upper","stability"], series: "fundamentals" },
-  { name: "90/90 Hip Switch",          id: "UNaEOTmqgOA", tags: ["lower","mobility"],  series: "fundamentals" },
-  { name: "Adductor Rock Back",        id: "61Sy4eZ8N_A", tags: ["lower","mobility"],  series: "fundamentals" },
-
-  // INDEPENDENCE THROUGH MOVEMENT
-  { name: "Turkish Get-Up for Beginners | Learn to Get Off the Floor Safely | Ep. 1",       id: "u_v_SvBpQTc", tags: ["lower","stability"], series: "independence" },
-  { name: "Rolling & Floor Transitions | Move Better on the Ground | Ep. 2",                id: "E_n8A5-MOQw", tags: ["mobility"],          series: "independence" },
-  { name: "Bridge Exercise for Beginners | Build Strength for Everyday Movement | Ep. 3",   id: "PNvTGBnctg8", tags: ["lower"],             series: "independence" },
-  { name: "Half Kneeling Transitions | Improve Balance & Body Control | Ep. 4",             id: "knz5y-IrCDI", tags: ["lower","stability"], series: "independence" },
-  { name: "Half Kneeling to Standing | Build Confidence Standing Up | Ep. 5",               id: "0uZwFZF1iPw", tags: ["lower","stability"], series: "independence" },
-  { name: "Sit-to-Stand for Beginners | Stand Up with Strength & Control | Ep. 6",          id: "oUdWdspFwaY", tags: ["lower","stability"], series: "independence" },
-  { name: "Step-Ups for Beginners | Climb Stairs with Strength & Balance | Ep. 7",          id: "OnxuKIxeXhI", tags: ["lower","stability"], series: "independence" },
-  { name: "Single-Leg Balance & Forward Reach | Prevent Falls & Improve Stability | Ep. 8", id: "pt0f7raInM8", tags: ["lower","stability"], series: "independence" },
-  { name: "Lateral Steps for Beginners | Move Side-to-Side with Confidence | Ep. 9",        id: "2XI79q1112Q", tags: ["lower","stability"], series: "independence" },
-  { name: "Hip Hinge for Beginners | Learn to Bend & Lift Safely | Ep. 10",                 id: "_8zseLVN7eo", tags: ["lower"],             series: "independence" },
-  { name: "Farmer Carry for Beginners | Build Real-World Strength & Posture | Ep. 11",      id: "9DdOgGxLHy8", tags: ["lower"],             series: "independence" },
-  { name: "Pallof Press for Beginners | Build Core Stability for Daily Life | Ep. 12",      id: "MP7UcvP3c48", tags: ["core"],              series: "independence" },
-  { name: "Walking Mechanics for Beginners | Improve Balance & Walking Efficiency | Ep. 13",id: "JUMs0f5Yd4E", tags: ["mobility"],          series: "independence" },
-
-  // AGILITY LADDER
-  { name: "Agility Ladder Beginner | Footwork & Coordination (Part 1)",       id: "SqEJue9KOL4", tags: ["lower","stability"], series: "ladder" },
-  { name: "Agility Ladder Intermediate | Speed & Coordination (Part 2)",      id: "4SZZOQOhpHA", tags: ["lower","stability"], series: "ladder" },
-  { name: "Agility Ladder Advanced | Explosive Power & Conditioning (Part 3)", id: "5hgzMgpEjmw", tags: ["lower","stability"], series: "ladder" },
-  { name: "10-Min Ladder for Beginners | Sagittal Plane Basics",              id: "wHHMYmKuw1s", tags: ["lower","stability"], series: "ladder" },
-  { name: "10-Min Ladder for Beginners | Frontal Plane Focus",                id: "QRorkNTb2Mw", tags: ["lower","stability"], series: "ladder" },
-  { name: "10-Min Ladder for Beginners | Transverse Plane Focus",             id: "KxdXJh9AlOo", tags: ["lower","stability"], series: "ladder" },
-
-  // SMR FOR GRAPPLERS
-  { name: "Chest Tight from Rolling? SMR for BJJ Grapplers",         id: "dZBTCOKcL1A", tags: ["upper","mobility"], series: "smr" },
-  { name: "Shoulder Tight After Jiu-Jitsu? Teres SMR for Grapplers", id: "044vTs2fD0g", tags: ["upper","mobility"], series: "smr" },
-  { name: "Rounded Upper Back from Grappling? T-Spine SMR for BJJ",  id: "7mhAByS79Qw", tags: ["upper","mobility"], series: "smr" },
-  { name: "Lat Tight from Guard Work? SMR for Jiu-Jitsu Athletes",   id: "M1mwy5hLR1c", tags: ["upper","mobility"], series: "smr" },
-  { name: "Neck Tight After Rolling? Stretches for BJJ Grapplers",   id: "S8pdbOJhO-A", tags: ["upper","mobility"], series: "smr" },
-  { name: "Tight Hips from Guard? Hip Flexor Recovery for Grapplers",id: "Qp_WrJgkAIs", tags: ["lower","mobility"], series: "smr" },
-
-  // STICK MOBILITY
-  { name: "Stick Mobility Basics #1 | Ankle, Hip & Shoulder Foundation", id: "bh3s_YNToDg", tags: ["mobility"],        series: "stick" },
-  { name: "Stick Mobility Basics #2 | Core Activation & Hip Control",    id: "gwM0CR6oLKo", tags: ["core","mobility"], series: "stick" },
-
-  // IRONMAN
-  { name: "IRONMAN California 140.6 | My 45th Birthday Race ‚Äì Trailer", id: "OYzwbsYvzrY", tags: [], series: "ironman" },
-  { name: "I Completed My First Ironman on My 45th Birthday (140.6 Mi)",id: "L4LI_w0wzx0", tags: [], series: "ironman" },
+  { name: "Push-Up", id: "cOHvJvKhbIo", tags: ["upper"], series: "fundamentals" },
+  { name: "Banded Side-to-Side Walks", id: "Vtactv6CVbA", tags: ["lower"], series: "fundamentals" },
+  { name: "Deceleration Squats", id: "xKX841sMnIk", tags: ["lower"], series: "fundamentals" },
+  { name: "Kneeling to Tall Kneeling", id: "3z72ZfGDXXw", tags: ["lower"], series: "fundamentals" },
+  { name: "Single-Leg RDL", id: "4nIUUVuuOr4", tags: ["lower"], series: "fundamentals" },
+  { name: "Single-Leg Forward Reach", id: "xYtrS20PP_0", tags: ["lower", "stability"], series: "fundamentals" },
+  { name: "Lunge", id: "4_G9-JLud6U", tags: ["lower"], series: "fundamentals" },
+  { name: "Side Lunge", id: "r-Qcgb_l4BU", tags: ["lower"], series: "fundamentals" },
+  { name: "Hip Hinge", id: "QojJl6xChfY", tags: ["lower"], series: "fundamentals" },
+  { name: "Single-Leg Alphabet Trace", id: "HCP0Ff2drVE", tags: ["lower", "stability"], series: "fundamentals" },
+  { name: "Bridge March", id: "Ydbdd7m7-W4", tags: ["lower"], series: "fundamentals" },
+  { name: "Heel Slide", id: "e3lxOV2Z9J8", tags: ["core"], series: "fundamentals" },
+  { name: "Bent-Knee Fallout", id: "J6EdMjlfHmc", tags: ["core"], series: "fundamentals" },
+  { name: "Pallof Press", id: "toesHgIHcgo", tags: ["core"], series: "fundamentals" },
+  { name: "Leg Lowers", id: "cyR2dI936yQ", tags: ["core"], series: "fundamentals" },
+  { name: "Dead Bug Hold", id: "DYf9ozrQ8-M", tags: ["core"], series: "fundamentals" },
+  { name: "Bird Dog", id: "rDerTS524Og", tags: ["core"], series: "fundamentals" },
+  { name: "Plank", id: "n141yZWEmn0", tags: ["core"], series: "fundamentals" },
+  { name: "Side Plank", id: "dWntXGJ4cFg", tags: ["core"], series: "fundamentals" },
+  { name: "Bridge", id: "KwleMZ5V7Ow", tags: ["lower"], series: "fundamentals" },
+  { name: "Sagittal Plane Training | Build Strength Through Forward Movement", id: "dHrpTQgPcN0", tags: ["lower", "stability"], series: "fundamentals" },
+  { name: "Frontal Plane Training | Improve Lateral Strength & Balance", id: "t5X3ggmMrj4", tags: ["lower", "stability"], series: "fundamentals" },
+  { name: "Transverse Plane Training | Improve Rotation & Athletic Movement", id: "7c7bDodu2-U", tags: ["core", "stability"], series: "fundamentals" },
+  { name: "Band Rotations for Beginners | Improve Core Strength & Rotation", id: "YKoFzLEFH8w", tags: ["core"], series: "fundamentals" },
+  { name: "Multidirectional Lunge with Curl & Overhead Press | Strength, Balance & Coordination", id: "wyPgoHrXBGw", tags: ["lower", "upper"], series: "fundamentals" },
+  { name: "TRX Roll Outs | Advanced Core Stability & Strength", id: "8pivWnC2VBU", tags: ["core", "upper"], series: "fundamentals" },
+  { name: "Split-Stance Squat | Build Balance, Stability & Lower-Body Strength", id: "07_SRDAsoYI", tags: ["lower", "stability"], series: "fundamentals" },
+  { name: "Project 50 | Week 1: The Starting Line | Building the Foundation to a 100-Mile Ultra", id: "F2Xqs6weGxw", tags: ["lower"], series: "project50" },
+  { name: "Threading the Needle", id: "UynTAe9JX9U", tags: ["upper", "mobility"], series: "fundamentals" },
+  { name: "Project 50 | Month 2: The Baseline", id: "StdUHdkD-sc", tags: ["lower"], series: "project50" },
+  { name: "Bear Crawl Hold", id: "vpzXA9WDprk", tags: ["core", "stability"], series: "fundamentals" },
+  { name: "Tiger Walk", id: "I5W_lof7JlM", tags: ["core", "mobility"], series: "fundamentals" },
+  { name: "Inch Worm", id: "R_lpI-9mAww", tags: ["core", "mobility"], series: "fundamentals" },
+  { name: "Adductor Rockback", id: "61Sy4eZ8N_A", tags: ["lower", "mobility"], series: "fundamentals" },
+  { name: "Scapular Push-Up", id: "NdiKpiaRGv4", tags: ["upper", "stability"], series: "fundamentals" },
+  { name: "90/90 Hip Switch", id: "UNaEOTmqgOA", tags: ["lower", "mobility"], series: "fundamentals" },
+  { name: "Hip Supported Airplanes", id: "zQUOuf3gLWc", tags: ["lower", "stability"], series: "fundamentals" },
+  { name: "Turkish Get-Up for Beginners | Learn to Get Off the Floor Safely | Ep. 1", id: "u_v_SvBpQTc", tags: ["lower", "stability"], series: "independence" },
+  { name: "Rolling & Floor Transitions | Move Better on the Ground | Ep. 2", id: "E_n8A5-MOQw", tags: ["mobility"], series: "independence" },
+  { name: "Bridge Exercise for Beginners | Build Strength for Everyday Movement | Ep. 3", id: "PNvTGBnctg8", tags: ["lower"], series: "independence" },
+  { name: "Half Kneeling Transitions | Improve Balance & Body Control | Ep. 4", id: "knz5y-IrCDI", tags: ["lower", "stability"], series: "independence" },
+  { name: "Half Kneeling to Standing | Build Confidence Standing Up | Ep. 5", id: "0uZwFZF1iPw", tags: ["lower", "stability"], series: "independence" },
+  { name: "Sit-to-Stand for Beginners | Stand Up with Strength & Control | Ep. 6", id: "oUdWdspFwaY", tags: ["lower", "stability"], series: "independence" },
+  { name: "Step-Ups for Beginners | Climb Stairs with Strength & Balance | Ep. 7", id: "OnxuKIxeXhI", tags: ["lower", "stability"], series: "independence" },
+  { name: "Single-Leg Balance & Forward Reach | Prevent Falls & Improve Stability | Ep. 8", id: "pt0f7raInM8", tags: ["lower", "stability"], series: "independence" },
+  { name: "Lateral Steps for Beginners | Move Side-to-Side with Confidence | Ep. 9", id: "2XI79q1112Q", tags: ["lower", "stability"], series: "independence" },
+  { name: "Hip Hinge for Beginners | Learn to Bend & Lift Safely | Ep. 10", id: "_8zseLVN7eo", tags: ["lower"], series: "independence" },
+  { name: "Farmer Carry for Beginners | Build Real-World Strength & Posture | Ep. 11", id: "9DdOgGxLHy8", tags: ["lower"], series: "independence" },
+  { name: "Pallof Press for Beginners | Build Core Stability for Daily Life | Ep. 12", id: "MP7UcvP3c48", tags: ["core"], series: "independence" },
+  { name: "Walking Mechanics for Beginners | Improve Balance & Walking Efficiency | Ep. 13", id: "JUMs0f5Yd4E", tags: ["mobility"], series: "independence" },
+  { name: "Agility Ladder Beginner | Footwork & Coordination (Part 1)", id: "SqEJue9KOL4", tags: ["lower", "stability"], series: "ladder" },
+  { name: "Agility Ladder Intermediate | Speed & Coordination (Part 2)", id: "4SZZOQOhpHA", tags: ["lower", "stability"], series: "ladder" },
+  { name: "Agility Ladder Advanced | Explosive Power & Conditioning (Part 3)", id: "5hgzMgpEjmw", tags: ["lower", "stability"], series: "ladder" },
+  { name: "10-Min Ladder for Beginners | Sagittal Plane Basics", id: "wHHMYmKuw1s", tags: ["lower", "stability"], series: "ladder" },
+  { name: "10-Min Ladder for Beginners | Frontal Plane Focus", id: "QRorkNTb2Mw", tags: ["lower", "stability"], series: "ladder" },
+  { name: "10-Min Ladder for Beginners | Transverse Plane Focus", id: "KxdXJh9AlOo", tags: ["lower", "stability"], series: "ladder" },
+  { name: "Chest Tight from Rolling? SMR for BJJ Grapplers", id: "dZBTCOKcL1A", tags: ["upper", "mobility"], series: "smr" },
+  { name: "Shoulder Tight After Jiu-Jitsu? Teres SMR for Grapplers", id: "044vTs2fD0g", tags: ["upper", "mobility"], series: "smr" },
+  { name: "Rounded Upper Back from Grappling? T-Spine SMR for BJJ", id: "7mhAByS79Qw", tags: ["upper", "mobility"], series: "smr" },
+  { name: "Lat Tight from Guard Work? SMR for Jiu-Jitsu Athletes", id: "M1mwy5hLR1c", tags: ["upper", "mobility"], series: "smr" },
+  { name: "Neck Tight After Rolling? Stretches for BJJ Grapplers", id: "S8pdbOJhO-A", tags: ["upper", "mobility"], series: "smr" },
+  { name: "Tight Hips from Guard? Hip Flexor Recovery for Grapplers", id: "Qp_WrJgkAIs", tags: ["lower", "mobility"], series: "smr" },
+  { name: "Stick Mobility Basics #1 | Ankle, Hip & Shoulder Foundation", id: "bh3s_YNToDg", tags: ["mobility"], series: "stick" },
+  { name: "Stick Mobility Basics #2 | Core Activation & Hip Control", id: "gwM0CR6oLKo", tags: ["core", "mobility"], series: "stick" },
+  { name: "IRONMAN California 140.6 | My 45th Birthday Race – Trailer", id: "OYzwbsYvzrY", tags: [], series: "ironman" },
+  { name: "I Completed My First Ironman on My 45th Birthday (140.6 Mi)", id: "L4LI_w0wzx0", tags: [], series: "ironman" }
 ];
 
-let activeCat    = "all";
-let activeSeries = "all";
-let searchTerm   = "";
+// Where the Exercise of the Week page lives (used for the "This week" banner)
+const EOTW_SOURCE = "/Exercise-of-the-week/exercise-of-the-week.html";
 
-const liveVideos = videos.filter(v => !v.comingSoon);
+// ============================================================
+function track(name, params) { try { if (window.gtag) gtag('event', name, params || {}); } catch (e) {} }
+function splitTitle(name) {
+  // "Bridge Exercise for Beginners | Build Strength… | Ep. 3" -> main + sub
+  const parts = name.split("|").map(s => s.trim());
+  const ep = parts.find(p => /^Ep\.\s*\d+/i.test(p));
+  const rest = parts.filter(p => p !== ep);
+  return { main: rest[0], sub: rest.slice(1).join(" · "), ep: ep ? ep.replace(/^Ep\.\s*/i, "Ep ") : null };
+}
+function slugify(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+videos.forEach(v => { v.slug = slugify(splitTitle(v.name).main); });
+function el(id) { return document.getElementById(id); }
 
-document.getElementById("header-sub").textContent =
-  `${liveVideos.length} videos ¬∑ tap to watch on YouTube`;
+const live = videos.filter(v => v.id);
+el("header-sub").textContent = `${live.length} free video tutorials · tap any video to watch`;
 
-function renderGrid() {
-  const grid = document.getElementById("grid");
-  const filtered = videos.filter(v => {
-    const matchCat    = activeCat === "all" || v.tags.includes(activeCat);
-    const matchSeries = activeSeries === "all" || v.series === activeSeries;
-    const matchSearch = v.name.toLowerCase().includes(searchTerm);
-    return matchCat && matchSeries && matchSearch;
-  });
+// Filters
+let activeCat = "all", activeSeries = "all", searchTerm = "", thisWeekId = null;
+const catOrder = ["all", "core", "upper", "lower", "stability", "mobility"];
+el("cat-filters").innerHTML = catOrder.map(c => {
+  const n = c === "all" ? live.length : live.filter(v => v.tags.includes(c)).length;
+  return `<button class="pill${c === "all" ? " active" : ""}" type="button" data-filter="${c}">${c === "all" ? "All" : tagLabels[c]}<small>${n}</small></button>`;
+}).join("");
+el("series-select").innerHTML = `<option value="all">All Series</option>` +
+  Object.keys(seriesInfo).map(k => `<option value="${k}">${seriesInfo[k]} (${live.filter(v => v.series === k).length})</option>`).join("");
 
-  const liveCount  = filtered.filter(v => !v.comingSoon).length;
-  const totalShown = filtered.length;
-
-  document.getElementById("count").textContent =
-    totalShown === videos.length
-      ? `Showing all ${liveVideos.length} videos`
-      : `Showing ${liveCount} video${liveCount !== 1 ? "s" : ""}`;
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `<p class="empty">No videos match your search.</p>`;
-    return;
-  }
-
-  grid.innerHTML = filtered.map(v => {
-    if (v.comingSoon) {
-      return `
-        <div class="card coming-soon">
-          <div class="coming-soon-thumb"><span class="coming-soon-label">Coming Soon</span></div>
-          <div class="card-body">
-            <p class="card-name">${v.name}</p>
-            <div class="tag-row">
-              <span class="tag tag-series">${seriesLabels[v.series]}</span>
-            </div>
-          </div>
-        </div>`;
-    }
-    return `
-      <a class="card" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.name}" loading="lazy" />
-          <div class="thumb-overlay">
-            <div class="play-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <p class="card-name">${v.name}</p>
-          <div class="tag-row">
-            <span class="tag tag-series">${seriesLabels[v.series]}</span>
-            ${v.tags.map(t => `<span class="tag ${tagClass[t]}">${tagLabels[t]}</span>`).join("")}
-          </div>
-        </div>
-      </a>`;
-  }).join("");
+function makeCard(v) {
+  const t = splitTitle(v.name);
+  const card = document.createElement("button");
+  card.type = "button";
+  card.className = "card";
+  card.setAttribute("aria-label", "Play " + t.main);
+  const thumb = document.createElement("div"); thumb.className = "thumb";
+  const img = document.createElement("img"); img.loading = "lazy"; img.alt = ""; img.src = `https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`;
+  thumb.appendChild(img);
+  thumb.insertAdjacentHTML("beforeend", `<div class="thumb-overlay"><div class="play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div></div>`);
+  if (t.ep) { const b = document.createElement("span"); b.className = "ep-badge"; b.textContent = t.ep; thumb.appendChild(b); }
+  if (v.id === thisWeekId) { const b = document.createElement("span"); b.className = "now-badge"; b.textContent = "This Week"; thumb.appendChild(b); }
+  const body = document.createElement("div"); body.className = "card-body";
+  const nm = document.createElement("p"); nm.className = "card-name"; nm.textContent = t.main; body.appendChild(nm);
+  const sub = document.createElement("p"); sub.className = "card-sub"; sub.textContent = t.sub || ""; if (!t.sub) sub.style.margin = "0 0 9px"; body.appendChild(sub);
+  const tags = document.createElement("div"); tags.className = "tag-row";
+  if (activeSeries === "all") { const s = document.createElement("span"); s.className = "tag tag-series"; s.textContent = seriesInfo[v.series]; tags.appendChild(s); }
+  v.tags.forEach(tag => { const s = document.createElement("span"); s.className = "tag tag-" + tag; s.textContent = tagLabels[tag]; tags.appendChild(s); });
+  body.appendChild(tags);
+  card.appendChild(thumb); card.appendChild(body);
+  card.addEventListener("click", () => openPlayer(v, card));
+  return card;
 }
 
-document.getElementById("cat-filters").addEventListener("click", e => {
-  const btn = e.target.closest(".pill");
-  if (!btn) return;
-  activeCat = btn.dataset.filter;
-  document.querySelectorAll("#cat-filters .pill").forEach(p => p.classList.remove("active"));
-  btn.classList.add("active");
-  renderGrid();
+function renderGrid() {
+  const grid = el("grid");
+  const q = searchTerm.trim();
+  const filtered = live.filter(v =>
+    (activeCat === "all" || v.tags.includes(activeCat)) &&
+    (activeSeries === "all" || v.series === activeSeries) &&
+    (!q || (v.name + " " + seriesInfo[v.series] + " " + v.tags.map(t => tagLabels[t]).join(" ")).toLowerCase().includes(q))
+  );
+  const filteredOn = activeCat !== "all" || activeSeries !== "all" || q;
+  el("count").textContent = filteredOn ? `Showing ${filtered.length} of ${live.length} videos` : `Showing all ${live.length} videos`;
+  el("clearBtn").classList.toggle("show", !!filteredOn);
+  grid.innerHTML = "";
+  if (!filtered.length) { grid.innerHTML = `<p class="empty">No videos match. Try another word or clear the filters.</p>`; return; }
+  // Group by series when showing everything, so it reads like a library
+  if (activeSeries === "all" && !q) {
+    Object.keys(seriesInfo).forEach(k => {
+      const group = filtered.filter(v => v.series === k);
+      if (!group.length) return;
+      const h = document.createElement("div"); h.className = "section-head";
+      h.innerHTML = `<h2></h2><span></span>`; h.firstChild.textContent = seriesInfo[k]; h.lastChild.textContent = group.length + " video" + (group.length !== 1 ? "s" : "");
+      grid.appendChild(h);
+      group.forEach(v => grid.appendChild(makeCard(v)));
+    });
+  } else {
+    filtered.forEach(v => grid.appendChild(makeCard(v)));
+  }
+}
+
+function syncUrl() {
+  try {
+    const u = new URL(location.href);
+    ["focus", "series", "q"].forEach(k => u.searchParams.delete(k));
+    if (activeCat !== "all") u.searchParams.set("focus", activeCat);
+    if (activeSeries !== "all") u.searchParams.set("series", activeSeries);
+    if (searchTerm.trim()) u.searchParams.set("q", searchTerm.trim());
+    history.replaceState(null, "", u.toString());
+  } catch (e) {}
+}
+function setCat(c) {
+  activeCat = c;
+  document.querySelectorAll("#cat-filters .pill").forEach(p => p.classList.toggle("active", p.dataset.filter === c));
+}
+
+el("cat-filters").addEventListener("click", e => {
+  const btn = e.target.closest(".pill"); if (!btn) return;
+  setCat(btn.dataset.filter); renderGrid(); syncUrl(); track("filter_focus", { focus: activeCat });
+});
+el("series-select").addEventListener("change", e => { activeSeries = e.target.value; renderGrid(); syncUrl(); track("filter_series", { series: activeSeries }); });
+let searchTimer;
+el("search").addEventListener("input", e => {
+  searchTerm = e.target.value.toLowerCase(); renderGrid(); syncUrl();
+  clearTimeout(searchTimer); searchTimer = setTimeout(() => { if (searchTerm.trim()) track("search", { search_term: searchTerm.trim() }); }, 1200);
+});
+el("clearBtn").addEventListener("click", () => {
+  setCat("all"); activeSeries = "all"; el("series-select").value = "all"; searchTerm = ""; el("search").value = "";
+  renderGrid(); syncUrl();
 });
 
-document.getElementById("series-select").addEventListener("change", e => {
-  activeSeries = e.target.value;
-  renderGrid();
+// ============================================================
+// PLAYER — watch without leaving the page
+// ============================================================
+let lastFocus = null;
+function openPlayer(v, trigger, fromLink) {
+  lastFocus = trigger || null;
+  const t = splitTitle(v.name);
+  el("playerTitle").textContent = t.main + (t.ep ? " · " + t.ep : "");
+  el("playerFrame").src = `https://www.youtube-nocookie.com/embed/${v.id}?autoplay=${fromLink ? 0 : 1}&rel=0&modestbranding=1&playsinline=1`;
+  el("ytLink").href = `https://www.youtube.com/watch?v=${v.id}`;
+  el("overlay").classList.add("active");
+  el("overlay").dataset.slug = v.slug;
+  el("closeBtn").focus();
+  try { const u = new URL(location.href); u.searchParams.set("v", v.slug); history.replaceState(null, "", u.toString()); } catch (e) {}
+  track("video_play", { video_title: t.main, series: seriesInfo[v.series], method: fromLink ? "shared_link" : "click" });
+}
+function closePlayer() {
+  el("overlay").classList.remove("active");
+  el("playerFrame").src = "";
+  try { const u = new URL(location.href); u.searchParams.delete("v"); history.replaceState(null, "", u.toString()); } catch (e) {}
+  if (lastFocus) lastFocus.focus();
+}
+el("closeBtn").addEventListener("click", closePlayer);
+el("overlay").addEventListener("click", e => { if (e.target === el("overlay")) closePlayer(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && el("overlay").classList.contains("active")) closePlayer(); });
+el("ytLink").addEventListener("click", () => track("youtube_open", { video_title: el("playerTitle").textContent }));
+function toast(msg) { const t = el("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove("show"), 1400); }
+el("shareBtn").addEventListener("click", () => {
+  const url = location.href, title = el("playerTitle").textContent + " — Functional Core Fitness";
+  track("share", { method: navigator.share ? "native" : "copy", content_type: "video", item_id: el("overlay").dataset.slug });
+  if (navigator.share) navigator.share({ title, url }).catch(() => {});
+  else if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => toast("Link copied"));
+  else window.prompt("Copy this link:", url);
 });
+document.querySelectorAll("[data-track]").forEach(a => a.addEventListener("click", () => track(a.dataset.track)));
 
-document.getElementById("search").addEventListener("input", e => {
-  searchTerm = e.target.value.toLowerCase();
-  renderGrid();
-});
+// ============================================================
+// START — read filters / shared video from the link
+// ============================================================
+(function () {
+  try {
+    const p = new URL(location.href).searchParams;
+    if (p.get("focus") && tagLabels[p.get("focus")]) setCat(p.get("focus"));
+    if (p.get("series") && seriesInfo[p.get("series")]) { activeSeries = p.get("series"); el("series-select").value = activeSeries; }
+    if (p.get("q")) { searchTerm = p.get("q").toLowerCase(); el("search").value = p.get("q"); }
+    renderGrid();
+    const want = p.get("v");
+    if (want) { const v = live.find(x => x.slug === want); if (v) openPlayer(v, null, true); }
+  } catch (e) { renderGrid(); }
+})();
 
-renderGrid();
+// ============================================================
+// THIS WEEK banner — reads the live Exercise of the Week page,
+// so the two pages always agree. Hidden if it can't be read.
+// ============================================================
+(function () {
+  if (!window.fetch) return;
+  fetch(EOTW_SOURCE, { cache: "no-cache" }).then(r => r.ok ? r.text() : Promise.reject()).then(html => {
+    const m = html.match(/var exercises = (\[[\s\S]*?\n\]);/);
+    const a = html.match(/var ANCHOR = Date\.UTC\((\d+),\s*(\d+),\s*(\d+)\)/);
+    const ai = html.match(/var ANCHOR_INDEX = (\d+)/);
+    if (!m || !a || !ai) return;
+    const items = [...m[1].matchAll(/name:"([^"]+)"[^}]*?videoId:"([^"]+)"/g)].map(x => ({ name: x[1], id: x[2] }));
+    if (!items.length) return;
+    const now = new Date();
+    const d = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+    const monday = d - (((new Date(d).getUTCDay() || 7) - 1) * 86400000);
+    const anchor = Date.UTC(+a[1], +a[2], +a[3]);
+    const weeks = Math.round((monday - anchor) / (7 * 86400000));
+    const n = items.length, idx = (((+ai[1] + weeks) % n) + n) % n;
+    const ex = items[idx];
+    el("eotwName").textContent = ex.name;
+    el("eotwImg").src = `https://i.ytimg.com/vi/${ex.id}/mqdefault.jpg`;
+    el("eotw").hidden = false;
+    thisWeekId = ex.id;
+    renderGrid();
+    el("eotw").addEventListener("click", () => track("eotw_banner_click", { exercise_name: ex.name }));
+  }).catch(() => {});
+})();
 </script>
 </body>
 </html>
