@@ -159,8 +159,8 @@
     <div class="top-row">
       <a href="https://functionalcorefitness.com" class="logo-link"><img src="fcf-logo.png" alt="Functional Core Fitness" width="202" height="48" /></a>
       <nav class="top-links">
-        <a class="top-link gold" href="/Exercise-of-the-week/exercise-of-the-week.html">⚡ Exercise of the Week</a>
-        <a class="top-link" href="/Exercise-of-the-week/join.html">✉️ Join</a>
+        <a class="top-link gold" href="exercise-of-the-week.html">⚡ Exercise of the Week</a>
+        <a class="top-link" href="join.html">✉️ Join</a>
       </nav>
     </div>
     <p class="header-eyebrow">Functional Core Fitness · Coach Omar Lima</p>
@@ -168,7 +168,7 @@
     <p class="header-sub" id="header-sub">Loading…</p>
   </header>
 
-  <a class="eotw" id="eotw" href="/Exercise-of-the-week/exercise-of-the-week.html" hidden>
+  <a class="eotw" id="eotw" href="exercise-of-the-week.html" hidden>
     <img id="eotwImg" alt="" />
     <div>
       <div class="eotw-kicker">⚡ This Week's Exercise</div>
@@ -207,7 +207,7 @@
       <p>Tips and movement breakdowns from Coach Omar, straight to your inbox.</p>
     </div>
     <div style="display:flex; gap:8px; flex-wrap:wrap;">
-      <a class="btn btn-gold" href="/Exercise-of-the-week/join.html" data-track="join_click">✉️ Join Free</a>
+      <a class="btn btn-gold" href="join.html" data-track="join_click">✉️ Join Free</a>
       <a class="btn btn-red" href="https://www.youtube.com/@FunctionalCoreFitness?sub_confirmation=1" target="_blank" rel="noopener" data-track="subscribe_click">▶ Subscribe</a>
     </div>
   </div>
@@ -284,6 +284,7 @@ const videos = [
   { name: "Scapular Push-Up", id: "NdiKpiaRGv4", tags: ["upper", "stability"], series: "fundamentals" },
   { name: "90/90 Hip Switch", id: "UNaEOTmqgOA", tags: ["lower", "mobility"], series: "fundamentals" },
   { name: "Hip Supported Airplanes", id: "zQUOuf3gLWc", tags: ["lower", "stability"], series: "fundamentals" },
+  { name: "Hip CARs", id: "yTH8jkK8ofM", tags: ["lower", "mobility"], series: "fundamentals" },
   { name: "Turkish Get-Up for Beginners | Learn to Get Off the Floor Safely | Ep. 1", id: "u_v_SvBpQTc", tags: ["lower", "stability"], series: "independence" },
   { name: "Rolling & Floor Transitions | Move Better on the Ground | Ep. 2", id: "E_n8A5-MOQw", tags: ["mobility"], series: "independence" },
   { name: "Bridge Exercise for Beginners | Build Strength for Everyday Movement | Ep. 3", id: "PNvTGBnctg8", tags: ["lower"], series: "independence" },
@@ -316,7 +317,7 @@ const videos = [
 ];
 
 // Where the Exercise of the Week page lives (used for the "This week" banner)
-const EOTW_SOURCE = "/Exercise-of-the-week/exercise-of-the-week.html";
+const EOTW_SOURCE = "exercise-of-the-week.html";
 
 // ============================================================
 function track(name, params) { try { if (window.gtag) gtag('event', name, params || {}); } catch (e) {} }
